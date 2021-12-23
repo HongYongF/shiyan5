@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <style>
+        .container {
+            width: 500px;
+            margin: 0 auto;
+			float: left;
+			margin-top: 200px;
+        }
+        .mySwiper img {
+            width: 100%;
+        }
+        .health {
+            text-align: center;
+            margin-top: -8px;
+            margin-left: 18px;
+        }
+        .health img {
+            width: 210px;
+        }
+		.box{
+			width: 900px;
+			height: 600px;
+			float: left;
+		}
+		.bigbox{
+			width: 1400px;
+			height: 600px;
+			margin: 0 auto;
+			margin-top: 100px;
+		}
+		.box-p{
+			line-height: 30px;
+			font-size: 13px;
+		}
+		.box-1{
+			width: 48%;
+			height: 400px;
+			float: left;
+			margin-left: 1%;
+		}
+		#backBtn{
+			position: absolute;
+			width: 300px;
+			height: 100px;
+			left: 100px;
+		}
+    </style>
+</head>
+<body>
+	<img src="res/indexBg1.png" onclick="toIndex()" id="backBtn"></img>
+	
+	<div class="bigbox">
+		<div class="container">
+		    <div class="head">
+		        <div class="swiper mySwiper">
+		            <div class="swiper-wrapper">
+		                <div class="swiper-slide"><img src="images/1_03.png" alt=""></div>
+		                <div class="swiper-slide"><img src="images/2_03.png" alt=""></div>
+		                <div class="swiper-slide"><img src="images/3_03.png" alt=""></div>
+		                <div class="swiper-slide"><img src="images/4_03.png" alt=""></div>
+		            </div>
+		            <div class="swiper-pagination"></div>
+		        </div>
+		    </div>
+		    <div class="health">
+		        <img src="images/b.png" alt="">
+		    </div>
+		</div>
+		
+		
+		<div class="box">
+			<div class="box-1">
+				<p class="box-p">1.生行 <br>
+				京剧中的生行指男性角色，分为老生，小生和武生。老生一般都以唱工为主，也有一种做工老生，专以念白和表情见长，代表人物是周信芳。另外，有些唱做之外还注重兵器武打的老生，叫文武老生。小生指青年角色，又细分为巾生，穷生，官生。小生中有三大著名流派，代表人物分别是姜妙香，俞振飞和叶盛兰。武生指会武艺的人物，分为长靠和短打两种。武生还可分出武老生，指年纪大的武生。武小生指年轻的武生，周瑜风流潇洒而在战场上又是手持兵器的武小生，因此这种角色被称为文武小生
+				</p>
+			</div>
+			<div class="box-1">
+				<p class="box-p">2.旦行<br>
+				旦指女性角色，按年龄分为老旦和小旦；按性格分青衣和花旦；按武功可分为武旦和刀马旦。老旦指一般老年妇女，唱与念用真嗓，近似老生，动作比生角带有女性色彩。花旦代表性格活泼，天真和泼辣的青年女子，服装以袄裤为主，表演上着重京白与各种动作。武旦，顾名思义是指会武艺的女性角色。其表演动作既要英勇善战，又要婀娜多姿。打破青衣与花旦的界限，兼有二者特点并吸收了刀马旦表演特点的一个新行当“花衫”是王瑶卿和梅兰芳所创，便与表现更多不同的妇女性格。四大名旦老师王瑶卿把他们表演特点概括为4句话：梅 兰芳的‘相’，程砚秋的唱，尚小云的‘棒’，荀慧生的‘浪’。此外，还有一些未被归类推选，但功力深厚，艺术成就较高的坤旦，满台升辉，都深受广大观众的喜爱和推崇
+				</p>
+			</div>
+			
+			<div class="box-1">
+				<p class="box-p">3.净行<br>
+也叫花脸，因为脸上涂抹大量颜色，是性格与相貌有特点的男性角色。用宽音，鼻音和假音演唱，讲究胸腔和颅腔的共鸣，一般多念韵白。重唱工的净叫“正净”，也叫“大花脸”或“铜锤”。侧重表演身段，功架与对白的净叫“副净”，也叫“架子花”或“二花脸”当今最有名的演员是袁世海。净的表演程式是最夸张的，尤其是脸面的化妆，涂上各种图案和花纹。对于不同人物的脸有各种不同规定的图案。
+</p>
+			</div>
+			
+			<div class="box-1">
+				<p class="box-p">4.丑行<br>
+“丑”指相貌丑陋的人物，一般在鼻子处沟画一块白，所以叫“小花脸”。丑主要分“武丑”，“文丑”和“一般丑”三种。武丑是会武艺的丑角，又叫“开口跳”这是因为要擅长念白和跳跃之故。文丑是不会武艺的丑角，常常是滑稽可笑的人物。年老诙谐的人物为“老丑”如《女起解》里的崇公道。“彩旦”一般指年龄较轻的，扮相特别夸张的女性丑角。
+</p>
+			</div>
+		
+		</div>
+	</div>
+
+    <script src="js/swiper-bundle.min.js"></script>
+    <script>
+		function toIndex(){
+			window.location.href = "index.html"
+
+		}
+        new Swiper(".mySwiper", {
+          slidesPerView: 3,
+          spaceBetween: 20,
+          loop: true
+        });
+      </script>
+</body>
+</html>

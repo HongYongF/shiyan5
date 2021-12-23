@@ -1,0 +1,116 @@
+﻿body,html{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#background{
+    background: url("../res/indexBg.jpg") no-repeat;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+#title{
+    position: relative;
+    top: 10%;
+    color: white;
+    font-family: 仿宋;
+    font-weight: bold;
+    font-size: 50px;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    margin: 0%;
+    transition: all ease 0.5s;
+}
+
+.entry-box{
+    position: relative;
+    top: 20vh;
+    display: flex;
+    width: 100vw;
+    height: 40vh;
+    flex-wrap: nowrap;
+
+}
+
+.museum{
+    background: url("../res/门素材.png") no-repeat;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+}
+
+.life{
+    background: url("../res/卷轴素材.png") no-repeat;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+}
+
+.shopping{
+    background: url("../res/宝箱素材.png") no-repeat;
+    height: 100%;
+    width: 100%;
+    background-size: contain;
+    background-position: center;
+}
+
+.item-name{
+    position: relative;
+    font-size: 30px;
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    top: 10%;
+    font-family: 仿宋;
+    font-weight: bolder;
+    color:rgb(207, 140, 76);
+}
+.entry-item{
+    flex: 1;
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: all ease 0.5s;
+}
+.entry-item:hover .item-name{
+    color: rgb(230, 79, 42);
+}
+
+.entry-item:hover{
+    transform: scale(1.2,1.2);
+    animation: shake 1.5s ease;
+}
+
+#title:hover{
+    transform: scale(1.2,1.2);
+}
+
+@keyframes shake {
+    20%{
+        transform: rotate(20deg);
+    }
+    40%{
+        transform: rotate(-20deg);
+    }
+    60%{
+        transform: rotate(10deg);
+    }
+    80%{
+        transform: rotate(-10deg);
+    }
+    100%{
+        transform: rotate(0);
+    }
+
+}
