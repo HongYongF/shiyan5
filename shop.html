@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商店页面</title>
+    <style>
+        *,
+        body {
+            /* 取消默认的margin和padding */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 设置导航栏样式 */
+        .tag {
+            height: 60px;                          /* 设置高度 */
+            background-color: rgb(21, 149, 235);    /* 设置背景色 */
+            /* 设置flex布局 */
+            display: flex;
+            align-items: center;                    /* flex垂直居中 */
+            border-radius: 10px;                    /* 设置边框圆角 */
+        }
+        .tag a {
+            margin-left: 20px;
+            margin-right: 20px;
+            color: #000;            /* 设置字体颜色 */
+            font-size: 20px;        /* 设置字体大小 */
+            text-align: center;     /* 设置文字水平居中 */
+            /* 设置flex布局 */
+            display: flex;
+            align-items: center;    /* flex垂直居中 */
+        }
+
+        /* 设置主体1的样式 */
+        .part1 {
+            background-image: url("images/background.png");     /* 设置背景图 */
+            background-size: 100% 100%;                         /* 设置大小占比 */
+            background-repeat: no-repeat;                       /* 设置为不重复 */
+            border-radius: 10px;                    /* 设置边框圆角 */
+        }
+        ul li {
+            /* 取消列表的默认格式 */
+            list-style: none;
+        }
+
+        /* 设置主体1中滚动条样式 */
+        .part1_scroll {
+            width: 1000px;                      /* 设置宽度 */
+            height: 210px;                      /* 设置高度 */
+            box-shadow: 5px 5px 5px black;    /* 设置阴影 */
+            margin: 0px auto;                  /* 设置margin */
+            overflow: hidden;                   /* 将超出的部分隐藏 */
+        }
+        .part1_scroll ul li {
+            /* 设置列表样式 */
+            float: left;    /* 向左漂移 */
+        }
+        .part1_scroll ul {
+            /* 设置列表样式 */
+            width: 200%;                        /* 设定宽度 */
+            animation: lb 5s linear infinite;   /* 设置lb动画 时长5s 线性 无限循环 */
+        }
+        @keyframes lb {
+            /* 设置动画 */
+            0% {margin-left: 0;}
+            100% {margin-left: -800px;}
+        }
+
+        .part1_box {
+            /* 设置主体1中box的样式 */
+            margin: 20px auto;                      /* 设置margin */
+            overflow: hidden;                       /* 超出的部分隐藏掉 */
+            width: 800px;                           /* 设置宽度 */
+            height: 900px;                          /* 设置高度 */
+            background-color: rgb(17, 184, 235);    /* 设置背景色 */
+            border: 1px solid #000;                 /* 设置边框 */
+            border-radius: 10px;                    /* 设置边框圆角 */
+            display: grid;                          /* 设置grid布局 */
+            grid-template-columns: repeat(3, 1fr);  /* 三列均分 */
+            grid-template-rows: repeat(3, 1fr);     /* 三行均分 */
+            place-items: center;                    /* 沿着对齐容器的中心对齐 */
+            grid-template-areas: 'a1 a2 a3'         /* 指定网格布局中的区域 */
+                                'a4 a5 a6'
+                                'a7 a8 a9';
+        }
+        .part1_box div:nth-child(1) {grid-area: a1;}
+        .part1_box div:nth-child(2) {grid-area: a2;}
+        .part1_box div:nth-child(3) {grid-area: a3;}
+        .part1_box div:nth-child(4) {grid-area: a4;}
+        .part1_box div:nth-child(5) {grid-area: a5;}
+        .part1_box div:nth-child(6) {grid-area: a6;}
+        .part1_box div:nth-child(7) {grid-area: a7;}
+        .part1_box div:nth-child(8) {grid-area: a8;}
+        .part1_box div:nth-child(9) {grid-area: a9;}
+
+        /* 设置主体1的box中中心的背景样式 */
+        .part1_box_centerbg {
+            margin: 50px auto;
+            overflow: hidden;
+            /* 设置大小 */
+            width: 200px;
+            height: 200px;
+            background-color: rgb(245, 9, 9);  /* 设置背景 */
+            border: 1px solid white;
+            border-radius: 10px;                    /* 设置边框圆角 */
+            display: flex;                          /* 设置flex布局 */
+            justify-content: center;                /* flex水平居中*/
+            align-items: center;                    /* flex垂直居中 */
+        }
+        /* 设置主体1的box中中心的按钮样式 */
+        .part1_box_centerbutton {
+            box-shadow: 0 0 15px white;     /* 设置按钮阴影 */
+            border-radius: 10px;            /* 设置边框圆角 */
+            color: #fff;                    /* 设置字体颜色 */
+            font-size: 40px;                /* 设置字体大小 */
+            /* 设置按钮背景色 */
+            background: linear-gradient(to right, yellow, red, yellow);
+            
+        }
+        .part1_box_centercontainer>div {
+            transition: all 0.5s;
+            /* 设置过渡动画 时长0.5秒*/
+        }
+        .part1_box_centercontainer div:hover {
+            transform: scale(0.90); /* 缩小至0.9 */
+            cursor: pointer;        /* 修改光标 */
+        }
+
+        /* 设置主体1的box中图片的整体样式 */
+        .part1_box_image {
+            width:150px;
+            background-color: rgb(21, 149, 235);    /* 设置背景 */
+            box-shadow: 0 0 15px #000;      /* 设置阴影 */
+            text-align: center;             /* 文字水平居中 */
+            overflow: hidden;               /* 超出部分隐藏 */
+            /* 设置flex布局 */
+            display: flex;                  
+            flex-direction: column;         /* 布局方向设置为竖向排列 */
+            align-items: center;            /* 设置垂直居中 */
+        }
+        .part1_box_image>div {
+            /* 设置过渡动画 时长0.5秒*/
+            transition: all 0.5s;
+        }
+        .part1_box_image div:hover {
+            transform: scale(0.90); /* 缩小到0.9 */
+            cursor: pointer;        /* 修改光标 */
+        }
+        /* 设置主体1的box中图片下方按钮的样式 */
+        .part1_box_imagebutton {
+            /* 设置大小 */
+            width: 200px;
+            height: 35px;
+            /* 设置字体颜色 */
+            color: #fff;                        
+            /* 设置背景 */
+            background: linear-gradient(to right, orange, red, green);
+            /* 设置flex布局 */
+            display: flex;                      
+            justify-content: center;    /* flex水平居中*/
+            align-items: center;        /* flex垂直居中 */
+        }
+        
+        .part2 {
+            /* 设置大小 */
+            height: 100vh;
+            width: 100%;
+            /* 设置字体 */
+            font-size: 60px;
+            /* 设置grid布局 */
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            grid-template-areas: 'a1 a1 a1 a1'
+                'a2 a3 a4 a5'
+                'a6 a7 a8 a9'
+                'a10 a10 a10 a10';
+            gap: 5px;
+        }
+        .part2 div:nth-child(1) {grid-area: a1;}
+        .part2 div:nth-child(2) {grid-area: a2;}
+        .part2 div:nth-child(3) {grid-area: a3;}
+        .part2 div:nth-child(4) {grid-area: a4;}
+        .part2 div:nth-child(5) {grid-area: a5;}
+        .part2 div:nth-child(6) {grid-area: a6;}
+        .part2 div:nth-child(7) {grid-area: a7;}
+        .part2 div:nth-child(8) {grid-area: a8;}
+        .part2 div:nth-child(9) {grid-area: a9;}
+        .part2 div:nth-child(10) {grid-area: a10;}
+
+        .part2 div {
+            background-size: cover;         /* 背景占满 */
+            background-attachment: fixed;   /* 随着页面的滚动轴背景不会移动 */
+            /* 设置flex布局 */
+            display: flex;
+            justify-content: center;        /* flex水平居中 */
+            align-items: center;            /* flex垂直居中 */
+            flex-direction: column;         /* 竖直排列 */
+        }
+        .part2>div {
+            /* 设置过渡动画 时长0.5秒*/
+            transition: all 0.5s;
+        }
+        .part2 div:hover {
+            opacity: 0.6;               /* 透明度变为0.6 */
+            transform: scale(0.90);     /* 缩小到0.9倍 */
+            cursor: pointer;            /* 改变光标 */
+        }
+        .part2_button {
+            background: url("images/background.png");   /* 设定背景图片 */
+            color: white;                           /* 设定颜色 */
+            font-family: STKaiti;                       /* 设定字体 */
+        }
+
+        /* 背景 */
+        #bg{
+            /* 设定位置 */
+            position:absolute;
+            top:0px;                    
+            left:0px;
+            /* 设定背景和大小*/
+            background-color:#202020d7;
+            width:100%;
+            height:100%;
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size:30% auto;
+            /* 初始设定为不显示 */
+            display:none;
+        }
+        /* 关闭按扭 */
+        .close_btn{
+            /* 设定位置 */
+            position:absolute;
+            top:30px;
+            right:30px;
+            /* 改变光标 */
+            cursor:pointer;
+            /* 初始设定为不显示 */
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <script type="text/javascript">
+        //显示大图
+        function showImage(id){
+            if(id!=0){
+                //id选择器
+                document.getElementById("bg").style.backgroundImage = "url('images/Mask"+id+".png')";
+                document.getElementById("bg").style.display = "block";
+                //class选择器
+                document.getElementsByClassName("close_btn")[0].style.display = "block";
+            }
+            else{
+                //生成1到14的随机数
+                var num = Math.floor((Math.random()*13)+1);
+                //id选择器
+                document.getElementById("bg").style.backgroundImage = "url('images/Mask"+num+".png')";
+                document.getElementById("bg").style.display = "block";
+                //class选择器
+                document.getElementsByClassName("close_btn")[0].style.display = "block";
+            }
+        }
+        //隐藏大图
+        function CloseImage(){
+            //id选择器
+            document.getElementById("bg").style.display = "none";
+            //class选择器
+            document.getElementsByClassName("close_btn")[0].style.display = "none";
+        }
+    </script>
+
+    <div class="tag">
+        <a href="index.html" title="回到首页">
+            <img src="images\ReturnButton.png" style="width: 30px;height: 30px; margin-right: 8px;">
+            <p>回到首页</p>
+        </a>
+    </div>
+
+    <div class="part1">
+        <div class="part1_scroll">
+            <ul>
+                <li><img src="images\Mask1.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask12.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask5.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask7.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask9.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask13.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask1.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask12.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask5.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask7.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask9.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask13.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask1.png" style="width: 133px;height: 200px;"></li>
+                <li><img src="images\Mask12.png" style="width: 133px;height: 200px;"></li>
+            </ul>
+        </div>
+
+        <div class="part1_box">
+            <!-- 除第五块完全不同以外，其余都是只换了图片源地址 -->
+            <div class="part1_box_image">
+                <img src="images\Mask1.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(1)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask3.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(3)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask5.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(5)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask7.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(7)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_centercontainer"  onclick="showImage(0)">
+                <div class="part1_box_centerbg">
+                    <div class="part1_box_centerbutton">
+                        随机选择
+                    </div>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask9.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(9)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask11.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(11)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask13.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(13)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+            <div class="part1_box_image">
+                <img src="images\Mask8.png" style="width: 150px;height: 200px;">
+                <div class="part1_box_imagebutton" onclick="showImage(8)">
+                    <p>点击了解</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="part2">
+        <div class="part2_button">
+            风雨犹祝，山海同欢，是承天地之佑
+        </div>
+        <div class="part2_button">
+            星移斗转
+        </div>
+        <div class="part2_button">
+            沧海桑田
+        </div>
+        <div class="part2_button">
+            烟火
+        </div>
+        <div class="part2_button">
+            人间依旧
+        </div>
+        <div class="part2_button">
+            功名在我
+        </div>
+        <div class="part2_button">
+            百岁千秋
+        </div>
+        <div class="part2_button">
+            毋忘
+        </div>
+        <div class="part2_button">
+            秉烛夜游
+        </div>
+        <div class="part2_button">
+            今古诸事，激荡中流，宏图待看新秀
+        </div>
+    </div>
+
+    <div id="bg"></div>
+    <img class="close_btn" src="images\CloseButton.png" title="关闭" onclick="CloseImage()" />
+</body>
+
+</html>
